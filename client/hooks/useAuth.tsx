@@ -47,7 +47,7 @@ const getAuthToken = useCallback(async (): Promise<AuthTokenResult | undefined> 
 
       const token = await getAccessTokenSilently({
         authorizationParams: {
-          audience: "https://valeerp.inventory.api",
+          audience: import.meta.env.VITE_AUTH0_AUDIENCE,
           scope: "openid profile email"
         }
       });
@@ -108,8 +108,12 @@ useEffect(() => {
                 };
 
                 try {
-                    console.log("🚀 Sincronizando usuario a backend local...");
-                    const response = await fetch('http://localhost:8080/api/auth/auth0-upsert', {
+                    const identityBase = import.meta.env.VITE_IDENTITY_API_URL?.trim().replace(/\/$/, "");
+                    if (!identityBase) {
+                        console.error("VITE_IDENTITY_API_URL no configurada.");
+                        return;
+                    }
+                    const response = await fetch(`${identityBase}/auth/auth0-upsert`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

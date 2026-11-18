@@ -56,17 +56,25 @@ const AppContent = () => (
 
 const App = () => {
 
-  const auth0Domain = "dev-663twfpev8syoqq5.us.auth0.com";
-  const auth0ClientId = "UAn2A8nk0ZMwYrHt1JtvlXGRh7IBU8G5";
-  const auth0Audience = "https://valeerp.inventory.api";
+  const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+  const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
+  const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
+
+  if (!domain || !clientId || !audience) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background p-6 text-sm text-muted-foreground">
+        Faltan VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID o VITE_AUTH0_AUDIENCE.
+      </div>
+    );
+  }
 
   return (
     <Auth0Provider
-      domain={auth0Domain}
-      clientId={auth0ClientId}
+      domain={domain}
+      clientId={clientId}
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: auth0Audience,
+        audience,
       }}
 
       cacheLocation="localstorage"
