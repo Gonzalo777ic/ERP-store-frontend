@@ -25,12 +25,13 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link to="/" className="flex items-center" aria-label="ValeERP">
+        <Link to="/" className="flex items-center gap-2 font-bold text-xl" aria-label="ValeERP">
           <img
-            src="/valeerp-wordmark.png"
-            alt="ValeERP"
-            className="h-9 w-auto rounded-md bg-white px-1.5 py-1"
+            src="/valeerp-mark.png"
+            alt=""
+            className="h-9 w-9 rounded-lg object-cover"
           />
+          <span>ValeERP</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <NavLink to="/" className={({isActive})=> isActive?"text-brand font-semibold":"text-gray-600 hover:text-gray-900"}>Inicio</NavLink>
