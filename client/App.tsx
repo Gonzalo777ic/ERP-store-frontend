@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Cart from "./pages/Cart";
+import ComplaintBookPage from "./pages/ComplaintBookPage";
 import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -44,6 +45,7 @@ const AppContent = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+          <Route path="/libro-de-reclamaciones" element={<ComplaintBookPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

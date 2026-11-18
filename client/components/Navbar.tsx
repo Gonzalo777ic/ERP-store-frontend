@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useCartStore } from "@/store/cart";
-import { LogIn, LogOut, PackageSearch, ShoppingCart, User } from "lucide-react";
+import { BookOpen, LogIn, LogOut, PackageSearch, ShoppingCart, User } from "lucide-react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
@@ -36,6 +36,7 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <NavLink to="/" className={({isActive})=> isActive?"text-brand font-semibold":"text-gray-600 hover:text-gray-900"}>Inicio</NavLink>
           <NavLink to="/products" className={({isActive})=> isActive?"text-brand font-semibold":"text-gray-600 hover:text-gray-900"}>Productos</NavLink>
+          <NavLink to="/libro-de-reclamaciones" className={({isActive})=> isActive?"text-brand font-semibold":"text-gray-600 hover:text-gray-900"}>Reclamaciones</NavLink>
           {isAuthed && (
             <NavLink to="/orders" className={({isActive})=> isActive?"text-brand font-semibold":"text-gray-600 hover:text-gray-900"}>Mis pedidos</NavLink>
           )}
@@ -67,6 +68,7 @@ export default function Navbar() {
       </div>
       <div className="md:hidden border-t px-4 py-2 flex gap-4 text-sm">
         <Link to="/products" className="flex items-center gap-2 text-gray-700"><PackageSearch className="h-4 w-4"/> Explorar</Link>
+        <Link to="/libro-de-reclamaciones" className="flex items-center gap-2 text-gray-700"><BookOpen className="h-4 w-4"/> Reclamaciones</Link>
       </div>
     </header>
   );
